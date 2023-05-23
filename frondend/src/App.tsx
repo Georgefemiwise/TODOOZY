@@ -4,7 +4,38 @@ import Button from './components/Button';
 import TaskCard from './components/TaskCard';
 
 export default function App() {
-	const [tasks, setTasks] = useState(TasksList);
+	const [tasks, setTasks] = useState({
+		title:'',
+		description:'',
+		deadline:'',
+		completed:false
+	});
+
+
+function handleSubmit(e) {
+	e.preventDefault()
+}
+function handleChange(e) {
+	setTasks(prev => ({
+	  ...prev,
+	  [e.target.name]: e.target.value
+	}));
+  }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	function toggle(id: number) {
 		setTasks((prevTasks) => {
@@ -50,6 +81,18 @@ export default function App() {
 	);
 
 	return (
+
+
+
+
+
+
+
+
+
+
+
+
 		<div className='bg-zinc-300 p-5 rounded w-screen min-h-screen grid place-content-center'>
 			<div className=' min-w-[80rem]** px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto'>
 				<h1 className='font-black text-6xl capitalize mb-7 text-center'>
@@ -60,7 +103,7 @@ export default function App() {
 						children='add Task'
 						backgroundColor='warning'
 						handleClick={addTask}
-					/>
+						/>
 					
 				</div>
 
@@ -71,13 +114,15 @@ export default function App() {
 								Todo List
 							</h1>
 							<div className='flex mt-4'>
-								<input
+						<form onSubmit={handleSubmit}>
+								<input onChange={handleChange}
 									className='shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-gray-950'
 									placeholder='Add Todo / '
-								/>
+									/>
 								<button className='flex-no-shrink p-2 border-2 rounded text-teal border-indigo-500 hover:text-white hover:bg-indigo-500'>
 									Add
 								</button>
+						</form>
 							</div>
 						</div>
 						<div>
